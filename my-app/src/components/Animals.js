@@ -11,11 +11,11 @@ export default class AnimalList extends Component {
                     <div key={animal.id} className="card">
                         <div className="card-body">
                             <h5 className="card-title">
-                                <img src={dog} className="icon--dog" />
+                                <img src={dog} className="icon--dog" alt="doggos"/>
                                 {animal.name}
-                                <a href="#"
+                                <button
                                     onClick={() => this.props.deleteAnimal(animal.id)}
-                                    className="card-link">Euthanize</a>
+                                    className="card-link">Euthanize</button>
                             </h5>
                         </div>
                     </div>

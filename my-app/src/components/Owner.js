@@ -11,9 +11,9 @@ export default class OwnerList  extends Component {
                     <div id={`owner--${owner.id}`} key={owner.id}>
                        <h4>{owner.name}</h4>
                         <p>{owner.phone}</p>
-                        <a href="#"
+                        <button
                                     onClick={() => this.props.deleteOwner(owner.id)}
-                                    className="card-link">Delete</a>
+                                    className="card-link">Delete</button>
                     </div>
                 )
             }

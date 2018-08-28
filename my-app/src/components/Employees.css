@@ -1,4 +1,8 @@
-.employees {
+.employeesHeader {
+    display: flex;
+    justify-content: center;
+}
+.employeesDetails {
     display: flex;
     justify-content: space-evenly;
 }
