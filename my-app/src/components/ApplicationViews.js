@@ -8,6 +8,8 @@ import AnimalManager from "../modules/animalManager"
 import EmployeeManager from "../modules/employeeManager"
 import LocationManager from "../modules/locationManager"
 import OwnerManager from "../modules/ownerManager"
+import AnimalDetail from './AnimalDetail'
+import OwnerDetail from './OwnerDetail'
 import "../index.css"
 
 
@@ -57,7 +59,7 @@ export default class ApplicationViews extends Component {
                 owners: owners
             }))
     }
-        deleteAnimal = id => AnimalManager.delete(id)
+    deleteAnimal = id => AnimalManager.delete(id)
         .then(animals => this.setState({
             animals: animals
         }))
@@ -119,11 +121,17 @@ export default class ApplicationViews extends Component {
                     <Route exact path="/animals" render={(props) => {
                         return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                     }} />
+                    <Route path="/animals/:animalId(\d+)" render={(props) => {
+                        return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    }} />
                     <Route exact path="/employees" render={(props) => {
                         return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                     }} />
                     <Route exact path="/owners" render={(props) => {
                         return <OwnersList deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                    }} />
+                    <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                        return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
                     }} />
                 </div>
             </React.Fragment>
