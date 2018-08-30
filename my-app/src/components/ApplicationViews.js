@@ -128,12 +128,14 @@ export default class ApplicationViews extends Component {
                     <Route path="/animals/:animalId(\d+)" render={(props) => {
                         return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                     }} />
-                    <Route exact path="/animals" render={(props) => {
-                        return <AnimalList {...props}
-                            deleteAnimal={this.deleteAnimal}
-                            animals={this.state.animals} />
+                    <Route exact path="/animals" render={props => {
+                        if (this.isAuthenticated()) {
+                            return <AnimalList deleteAnimal={this.deleteAnimal}
+                                animals={this.state.animals} />
+                        } else {
+                            return <Redirect to="/login" />
+                        }
                     }} />
-
                     <Route path="/animals/new" render={(props) => {
                         return <AnimalForm {...props}
                             addAnimal={this.addAnimal}

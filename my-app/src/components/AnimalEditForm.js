@@ -2,11 +2,16 @@ import React, { Component } from "react"
 
 export default class AnimalEdit extends Component {
     
+    componentDidMount () {
+        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) 
+        this.setState(animal)      
+    }
+
     // Set initial state
     state = {
-        animalName: "",
-        type: "",
-        employee: ""
+        name: "",
+        breed: "",
+        employeeId: ""
     }
 
     // Update state whenever an input field is edited
@@ -23,14 +28,25 @@ export default class AnimalEdit extends Component {
      */
     handleSubmit = evt => {
         evt.preventDefault()
+        const conditionEmployee = typeof this.state.employeeId === 'number'
         if (this.state.employee === "") {
             window.alert("Please select a caretaker")
         } else {
             const animal = {
-                name: this.state.animalName,
+                name: this.state.name,
                 breed: this.state.breed,
-                employeeId: this.props.employees.find(e => e.name === this.state.employee).id
+                employeeId: conditionEmployee ? this.state.employeeId : this.props.employees.find(e => e.name === this.state.employeeId).id
             }
+    // handleSubmit = evt => {
+    //     evt.preventDefault()
+    //     if (this.state.employee === "") {
+    //         window.alert("Please select a caretaker")
+    //     } else {
+    //         const animal = {
+    //             name: this.state.animalName,
+    //             breed: this.state.breed,
+    //             employeeId: this.props.employees.find(e => e.name === this.state.employee).id
+    //         }
                 
 
             // Create the animal and redirect user to animal list
@@ -40,32 +56,36 @@ export default class AnimalEdit extends Component {
     };
 
     render() {
-        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) || {}
-        console.log("does this work??")
+        // const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) || {}
+        // console.log("does this work??")
         return (
             <React.Fragment>
                 <form className="animalForm">
+
                     <div className="form-group">
                         <label htmlFor="animalName">Animal Name</label>
                         <input type="text" required="true"
                                className="form-control"
                                onChange={this.handleFieldChange}
-                               id="animalName"
+                               id="name"
                                defaultValue={this.state.name}
-                               placeholder="Animal name" />
+                               placeholder="Animal name" 
+                               />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Breed:</label>
+                        <label htmlFor="breed">Breed</label>
                         <input type="text" required="true"
                                className="form-control"
                                onChange={this.handleFieldChange}
-                               id="breed" placeholder="Breed" />
+                               id="breed"
+                               defaultValue={this.state.breed}
+                               placeholder="Breed" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="employee">Assign to caretaker</label>
-                        <select defaultValue="" name="employee" id="employee"
+                        <select defaultValue={this.state.employeeId} name="employee" id="employeeId"
                                 onChange={this.handleFieldChange}>
-                            <option value="">Select an employee</option>
+                            <option defaultValue={this.state.employeeId}>Select an employee</option>
                         {
                             this.props.employees.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
                         }
