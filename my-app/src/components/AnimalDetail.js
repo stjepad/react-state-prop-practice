@@ -18,9 +18,10 @@ export default class AnimalDetail extends Component {
                     <div className="card-body">
                         <h4 className="card-title">
                             <img src={dog} className="icon--dog" />
-                            {animal.name}
+                            Animal Name: {animal.name}
                         </h4>
-                        <h6 className="card-title">{animal.breed}</h6>
+                        <h6 className="card-title">Breed: {animal.breed}</h6>
+                        <h6 className="card-title">Employee: {animal.employeeId}</h6>
                         <button type="button"
                                 className="btn btn-success"
                             onClick={() =>  this.props.history.push(`/animals/edit/${animal.id}`)}

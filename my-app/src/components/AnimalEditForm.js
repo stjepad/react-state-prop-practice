@@ -37,17 +37,6 @@ export default class AnimalEdit extends Component {
                 breed: this.state.breed,
                 employeeId: conditionEmployee ? this.state.employeeId : this.props.employees.find(e => e.name === this.state.employeeId).id
             }
-    // handleSubmit = evt => {
-    //     evt.preventDefault()
-    //     if (this.state.employee === "") {
-    //         window.alert("Please select a caretaker")
-    //     } else {
-    //         const animal = {
-    //             name: this.state.animalName,
-    //             breed: this.state.breed,
-    //             employeeId: this.props.employees.find(e => e.name === this.state.employee).id
-    //         }
-                
 
             // Create the animal and redirect user to animal list
             this.props.editAnimal(this.props.match.params.animalId, animal).then(() => this.props.history.push("/animals"))
@@ -56,8 +45,6 @@ export default class AnimalEdit extends Component {
     };
 
     render() {
-        // const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) || {}
-        // console.log("does this work??")
         return (
             <React.Fragment>
                 <form className="animalForm">
