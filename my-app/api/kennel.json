@@ -27,24 +27,32 @@
   ],
   "animals": [
     {
-      "id": 1,
-      "name": "bloop"
-    },
-    {
       "id": 2,
-      "name": "bloop"
-    },
-    {
-      "id": 4,
-      "name": "bloop"
-    },
-    {
-      "id": 5,
-      "name": "bloop"
+      "name": "bloop3",
+      "type": "meow",
+      "employeeId": 4
     },
     {
       "id": 6,
       "name": "bloop"
+    },
+    {
+      "name": "chicken Nugget",
+      "breed": "pew pew",
+      "employeeId": 2,
+      "id": 7
+    },
+    {
+      "name": "blerg",
+      "breed": "woof",
+      "employeeId": 3,
+      "id": 8
+    },
+    {
+      "name": "kiki",
+      "breed": "do you love me",
+      "employeeId": 2,
+      "id": 9
     }
   ],
   "owners": [

@@ -19,5 +19,27 @@ export default Object.create(null, {
         .then(()=>{return fetch(`${remoteURL}/animals`).then(e => e.json()) })
 
         }
+    },
+    post: {
+        value: function (newAnimal) {
+            return fetch(`${remoteURL}/animals`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newAnimal)
+            }).then(e => e.json())
+        }
+    },
+    patch: {
+        value: function (id, editAnimal) {
+            return fetch(`${remoteURL}/animals/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(editAnimal)
+            }).then(e => e.json())
+        }
     }
 })
